@@ -1,0 +1,39 @@
+body{
+    background: repeating-linear-gradient(135deg, #F5F5F5, #ff0000);
+    background-attachment: fixed;
+}
+
+#title{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+}
+
+#searchPokemon{
+    text-align: center;
+    margin-top: 30px;
+}
+
+#searchPokemon button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    border-style: none;
+    background-color: #0075BE;
+    color: #FFCB05;
+    font-size: bold;
+    font-size: 20px;
+}
+
+#searchPokemon button:hover{
+    background-color: hsla(203, 100%, 37%, 0.8);
+
+}
+
+#searchPokemon button:active{
+    background-color: hsla(203, 100%, 37%, 0.7);
+
+}

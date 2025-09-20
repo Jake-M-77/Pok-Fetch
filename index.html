@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PokéFetch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="PokeFetchImg.png">
 </head>
 <body>
-    
-    <h1>Hello, World!</h1>
+
+    <img id="title" src="PokeFetchImg.png">
+
+    <div id="searchPokemon">
+        <label for="pokemonName">Enter Pokemon: </label>
+        <input type="text" id="pokemonName">
+        <button type="submit" onclick="FetchPokemon()" id="fetchPokemonButton">Load Pokemon</button>
+        <br>
+    </div>
+
+    <div id="pokemonResult">
+        <img src="" id="pokemonImage" style="display: none;">
+        <p>Type of Pokemon: <span id="pokemonType">Awaiting Pokemon</span></p>
+    </div>
 
     <script src="index.js"></script>
 </body>
