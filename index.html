@@ -1,28 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokéFetch</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="PokeFetchImg.png">
+    <link rel="icon" href="PokeFetchImg.png" type="image/png">
 </head>
+
 <body>
 
     <img id="title" src="PokeFetchImg.png">
 
     <div id="searchPokemon">
-        <label for="pokemonName">Enter Pokemon: </label>
-        <input type="text" id="pokemonName">
+        <label for="enterPokemonName">Enter Pokemon: </label>
+        <input type="text" id="enterPokemonName">
         <button type="submit" onclick="FetchPokemon()" id="fetchPokemonButton">Load Pokemon</button>
         <br>
     </div>
 
     <div id="pokemonResult">
-        <img src="" id="pokemonImage" style="display: none;">
-        <p>Type of Pokemon: <span id="pokemonType">Awaiting Pokemon</span></p>
+        <!-- <img src="" id="pokemonImage" style="display: none;"> -->
+        <!-- <p>Type of Pokemon: <span id="pokemonType">Awaiting Pokemon</span></p> -->
     </div>
+
+    <!-- I will use a table down column for this,
+     it will restrict the amount of things i can have
+     on show, it may be worth having it where if you
+     press a show more button it will open it up in a
+     large table page -->
+
+    <table style="margin: auto;">
+        <tr>
+            <th id="pokemonName" style="display: none;"></th>
+        </tr>
+        <tr style="margin: auto;">
+            <td>
+                <img src="" id="pokemonImage" style="display: none;">
+                
+                <div id="sectionOne" style="display: none;">
+                    <p>Pokemon ID: <br><span id="pokemonId"></span></p>
+                    
+                    <p>PokemonType: <br><span id="pokemonType"></span></p>
+                </div>
+                <br>
+                <div id="sectionTwo" style="display: none;">
+                    <!-- The content for section two is generated via JS -->
+                </div>
+                <br>
+                <div id="sectionThree" style="display: none;">
+
+                </div>
+
+
+
+
+
+
+            </td>
+
+        </tr>
+    </table>
 
     <script src="index.js"></script>
 </body>
+
 </html>
