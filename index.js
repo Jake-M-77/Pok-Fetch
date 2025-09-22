@@ -49,7 +49,7 @@ async function FetchPokemon() {
 
         const POKEMON_TYPE = document.getElementById("pokemonType");
 
-        POKEMON_TYPE.textContent = data.types[0].type.name;
+        POKEMON_TYPE.textContent = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
 
         const SECTION_ONE = document.getElementById("sectionOne");
         SECTION_ONE.style.display = "block";
@@ -66,9 +66,9 @@ async function FetchPokemon() {
             if (!ability.is_hidden == true) {
                 abilitycounter++;
                 const ABILITY = document.createElement("p");
-                console.log(`Ability${abilitycounter}: ${ability.name}`);
+                console.log(`Ability${abilitycounter}: ${ability.ability.name}`);
 
-                ABILITY.textContent = `Ability${abilitycounter}: ${ability.ability.name}`;
+                ABILITY.textContent = `Ability${abilitycounter}: ${ability.ability.name.charAt(0).toUpperCase()}${ability.ability.name.slice(1)}`;
 
                 SECTION_TWO.appendChild(ABILITY);
             }
@@ -81,7 +81,7 @@ async function FetchPokemon() {
 
         data.stats.forEach(item => {
             const statItem = document.createElement("p");
-            statItem.textContent = `${item.stat.name}:${item.base_stat}`;
+            statItem.textContent = `${item.stat.name.charAt(0).toUpperCase()}${item.stat.name.slice(1)}:${item.base_stat}`;
             SECTION_THREE.appendChild(statItem);
 
         });
