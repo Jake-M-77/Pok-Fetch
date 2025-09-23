@@ -40,18 +40,20 @@ async function loadPokemon(data) {
 
 
 
-const SPRITE_SPIN = [
-    { transform: "rotateY(360deg)" }
-];
-
-const SPRITE_SPIN_DURATION = {
-    duration: 2000,
-    iterations: Infinity
-};
-
 async function animateSprite() {
-        pokemonImage.getAnimations().forEach(anim => anim.cancel());
-        pokemonImage.animate(SPRITE_SPIN, SPRITE_SPIN_DURATION);
+
+    const SPRITE_SPIN = [
+        { transform: "rotateY(360deg)" }
+    ];
+
+    const SPRITE_SPIN_DURATION = {
+        duration: 2000,
+        iterations: Infinity
+    };
+
+
+    pokemonImage.getAnimations().forEach(anim => anim.cancel());
+    pokemonImage.animate(SPRITE_SPIN, SPRITE_SPIN_DURATION);
 }
 
 
