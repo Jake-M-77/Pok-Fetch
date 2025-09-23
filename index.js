@@ -1,6 +1,5 @@
 //To-Do list:
-//1. animate the sprites
-//2. Add an error handle box for the user to see that the name entered is incorrect.
+//1. Add an error handle box for the user to see that the name entered is incorrect.
 
 
 const fetchPokemonButton = document.getElementById("fetchPokemonButton");
@@ -30,21 +29,38 @@ const SECTION_TWO = document.getElementById("sectionTwo");
 //also to display block as they are set to none in the html code
 const SECTION_THREE = document.getElementById("sectionThree");
 
-async function loadPokemon(data){
+async function loadPokemon(data) {
+
     await loadPokemonSprite(data);
     await loadSectionOne(data);
     await loadSectionTwo(data);
     await loadSectionThree(data);
-
+    await animateSprite();
 }
 
-async function loadPokemonSprite(data){
-    pokeImage = data.sprites.front_default;
-    pokemonImage.src = pokeImage;
+
+
+const SPRITE_SPIN = [
+    { transform: "rotateY(360deg)" }
+];
+
+const SPRITE_SPIN_DURATION = {
+    duration: 2000,
+    iterations: Infinity
+};
+
+async function animateSprite() {
+        pokemonImage.getAnimations().forEach(anim => anim.cancel());
+        pokemonImage.animate(SPRITE_SPIN, SPRITE_SPIN_DURATION);
+}
+
+
+async function loadPokemonSprite(data) {
+    pokemonImage.src = data.sprites.front_default;;
     pokemonImage.style.display = "block";
 }
 
-async function loadSectionOne(data){
+async function loadSectionOne(data) {
     SECTION_ONE.style.display = "block";
     POKEMON_NAME.textContent = data.name.toUpperCase();
     POKEMON_ID.textContent = data.id;
@@ -53,14 +69,14 @@ async function loadSectionOne(data){
     POKEMON_NAME.style.display = "block";
 }
 
-async function loadSectionTwo(data){
+async function loadSectionTwo(data) {
     SECTION_TWO.innerHTML = "";
     let abilitycounter = 0;
     data.abilities.forEach(item => {
         abilitycounter++;
         if (!item.is_hidden) {
             const ABILITY = document.createElement("p");
-            ABILITY.textContent = `Abilitiy${abilitycounter}: ${item.ability.name.charAt(0).toUpperCase()}${item.ability.name.slice(1)}`;
+            ABILITY.textContent = `Ability${abilitycounter}: ${item.ability.name.charAt(0).toUpperCase()}${item.ability.name.slice(1)}`;
             SECTION_TWO.append(ABILITY);
         }
     });
@@ -68,7 +84,7 @@ async function loadSectionTwo(data){
     SECTION_TWO.style.display = "block";
 }
 
-async function loadSectionThree(data){
+async function loadSectionThree(data) {
     SECTION_THREE.innerHTML = "";
     data.stats.forEach(item => {
         const STAT_ITEM = document.createElement("p");
@@ -90,8 +106,7 @@ async function FetchPokemon() {
         if (!response.ok) {
             throw new Error("Error fetching data from API");
         }
-        else
-        {
+        else {
             const data = await response.json();
 
             console.log(data);
