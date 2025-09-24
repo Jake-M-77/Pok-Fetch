@@ -29,6 +29,10 @@ const SECTION_TWO = document.getElementById("sectionTwo");
 //also to display block as they are set to none in the html code
 const SECTION_THREE = document.getElementById("sectionThree");
 
+//responsible for the error box which displays to the user
+const ERROR_BOX = document.getElementById("errorBox");
+
+
 async function loadPokemon(data) {
 
     await loadPokemonSprite(data);
@@ -113,11 +117,38 @@ async function FetchPokemon() {
 
             console.log(data);
 
+            ERROR_BOX.style.display = "none";
+
             await loadPokemon(data);
         }
     }
     catch (error) {
         console.error(error);
+        ClearAllRenderedElements();
+        ErrorBox();
     }
+
+}
+
+
+async function ErrorBox() {
+    ERROR_BOX.innerHTML = "";
+    const ERROR_INFO = document.createElement("p");
+    ERROR_INFO.textContent = `Error fetching data from API!`;
+    ERROR_BOX.style.display = "block";
+    ERROR_BOX.appendChild(ERROR_INFO);
+}
+
+async function ClearAllRenderedElements() {
+    POKEMON_NAME.innerHTML = "";
+    POKEMON_NAME.style.display = "none";
+    pokemonImage.innerHTML = "";
+    pokemonImage.style.display = "none";
+    SECTION_ONE.innerHTML = "";
+    SECTION_ONE.style.display = "none";
+    SECTION_TWO.innerHTML = "";
+    SECTION_TWO.style.display = "none";
+    SECTION_THREE.innerHTML = "";
+    SECTION_THREE.style.display = "none";
 
 }

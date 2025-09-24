@@ -117,3 +117,16 @@ p {
     display: block;
     text-align: left;
 }
+
+#errorBox {
+    width: 300px;
+    height: auto;
+    text-align: center;
+    border: 5px solid var(--pokemonBlue);
+    text-align: center;
+    font-size: large;
+    background-color: var(--pokemonYellow);
+    border-radius: 20px;
+    box-shadow: 5px 10px var(--pokemonBlue);
+
+}
