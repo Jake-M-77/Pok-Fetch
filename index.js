@@ -110,7 +110,7 @@ async function FetchPokemon() {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
 
         if (!response.ok) {
-            throw new Error("Error fetching data from API");
+            throw new Error("Pokemon not found!");
         }
         else {
             const data = await response.json();
@@ -125,16 +125,16 @@ async function FetchPokemon() {
     catch (error) {
         console.error(error);
         ClearAllRenderedElements();
-        ErrorBox();
+        ErrorBox(error);
     }
 
 }
 
 
-async function ErrorBox() {
+async function ErrorBox(error) {
     ERROR_BOX.innerHTML = "";
     const ERROR_INFO = document.createElement("p");
-    ERROR_INFO.textContent = `Error fetching data from API!`;
+    ERROR_INFO.textContent = `${error}`;
     ERROR_BOX.style.display = "block";
     ERROR_BOX.appendChild(ERROR_INFO);
 }
