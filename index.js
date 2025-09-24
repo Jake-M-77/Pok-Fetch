@@ -71,8 +71,10 @@ async function loadSectionOne(data) {
     POKEMON_NAME.textContent = data.name.toUpperCase();
     POKEMON_ID.textContent = data.id;
     POKEMON_TYPE.textContent = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
-    POKEMON_NAME.textContent = data.name.toUpperCase();
     POKEMON_NAME.style.display = "block";
+    POKEMON_ID.style.display = "block";
+    POKEMON_TYPE.style.display = "block";
+
 }
 
 async function loadSectionTwo(data) {
@@ -142,10 +144,11 @@ async function ErrorBox(error) {
 async function ClearAllRenderedElements() {
     POKEMON_NAME.innerHTML = "";
     POKEMON_NAME.style.display = "none";
-    pokemonImage.innerHTML = "";
+    pokemonImage.getAnimations().forEach(anim => {anim.cancel()});
     pokemonImage.style.display = "none";
-    SECTION_ONE.innerHTML = "";
-    SECTION_ONE.style.display = "none";
+    SECTION_ONE.style.display = "none"
+    POKEMON_ID.textContent = "";
+    POKEMON_TYPE.textContent = "";
     SECTION_TWO.innerHTML = "";
     SECTION_TWO.style.display = "none";
     SECTION_THREE.innerHTML = "";
